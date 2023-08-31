@@ -1,6 +1,6 @@
 ﻿namespace WebAPI.AddServices
 {
-    public interface IWebAppliacationBuilderAddServices
+    public interface IWebAppliacationBuilderAddServices : IRegistrar
     {
         public void AddServices(WebApplicationBuilder builder);
     }

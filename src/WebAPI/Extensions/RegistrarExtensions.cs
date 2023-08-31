@@ -4,21 +4,21 @@ namespace WebAPI.Extensions
 {
     public static class RegistrarExtensions
     {
-        public static void RegistrarSrvices(this WebApplicationBuilder builder,Type scanningType)
+        public static void AddServices(this WebApplicationBuilder builder,Type scanningType)
         {
             var registrars = GetRegistrars<IWebAppliacationBuilderAddServices>(scanningType);
 
             foreach (var registrar in registrars)
             {
-                registrar.RegistrarSrvices(builder);
+                registrar.AddServices(builder);
             }
         }
-        public static void RegistrarPipeline(this WebApplication app, Type scanningType)
+        public static void AddServicesPipeline(this WebApplication app, Type scanningType)
         {
             var registrars = GetRegistrars<IWebAppliacationAddServices>(scanningType);
             foreach (var registrar in registrars)
             {
-                registrar.RegistrarPipeline(app);
+                registrar.AddServicesPipeline(app);
             }
         }
 

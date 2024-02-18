@@ -13,11 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanArchitecture.DataTranfer\CleanArchitecture.DataTransfer.csproj" />
+    <ProjectReference Include="..\CleanArchitecture.DataTranfer\CleanArchitecture.DataTranfer.csproj" />
     <ProjectReference Include="..\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="UserRagistration\UserQuery\" />
     <Folder Include="UserRagistration\UserQuery\" />
   </ItemGroup>
 

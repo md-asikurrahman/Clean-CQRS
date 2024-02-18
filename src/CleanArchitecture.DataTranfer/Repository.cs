@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 
-namespace CleanArchitecture.DataTransfer
+namespace CleanArchitecture.DataTranfer
 {
     public class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     where TEntity : class, IEntity<TKey> where TKey : IComparable<TKey>

@@ -1,18 +1,19 @@
 ﻿using CleanArchitecture.Application.UserRagistration.Command;
+using CleanArchitecture.Application.ViewModel;
+using CleanArchitecture.DataTranfer.Contract;
+using CleanArchitecture.Domain.Entities;
 using MediatR;
 
 namespace CleanArchitecture.Application.UserRagistration.UserCommandHandler
 {
     public class UserRegistrationCommandHandler : IRequestHandler<UserRegistrationCommand, string>
     {
-        public  Task<string> Handle(UserRegistrationCommand request, CancellationToken cancellationToken)
-        {
-
-            var result = "Succecfull";
-            return Ok(result);
-        }
-
-        private Task<string> Ok(string result)
+        //private readonly IRepository<AppUser, int> _repository;
+        //public UserRegistrationCommandHandler(IRepository repository)
+        //{
+        //    _repository = repository;
+        //}
+        public Task<string> Handle(UserRegistrationCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

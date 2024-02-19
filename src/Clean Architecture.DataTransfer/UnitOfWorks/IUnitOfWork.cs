@@ -1,6 +1,6 @@
-﻿using Clean_Architecture.DataTransfer.Repository;
+﻿using CleanArchitecture.DataTransfer.Repository;
 
-namespace Clean_Architecture.DataTransfer.UnitOfWorks
+namespace CleanArchitecture.DataTransfer.UnitOfWorks
 {
     public interface IUnitOfWork : IDisposable, IAsyncDisposable
     {

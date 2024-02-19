@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clean_Architecture.DataTransfer.Repository
+namespace CleanArchitecture.DataTransfer.Repository
 {
     public interface IGenericRepository<TEntity> : IDisposable, IAsyncDisposable where TEntity : class
     {

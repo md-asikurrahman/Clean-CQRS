@@ -1,8 +1,8 @@
-﻿using Clean_Architecture.DataTransfer.Repository;
+﻿using CleanArchitecture.DataTransfer.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Clean_Architecture.DataTransfer.UnitOfWorks
+namespace CleanArchitecture.DataTransfer.UnitOfWorks
 {
     public class UnitOfWork<TContext> : IUnitOfWork where TContext : DbContext
     {

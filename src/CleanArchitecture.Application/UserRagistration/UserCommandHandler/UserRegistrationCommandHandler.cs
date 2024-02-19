@@ -1,6 +1,5 @@
 ﻿using CleanArchitecture.Application.UserRagistration.Command;
 using CleanArchitecture.Application.ViewModel;
-using CleanArchitecture.DataTranfer.Contract;
 using CleanArchitecture.Domain.Entities;
 using MediatR;
 

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Infrustru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.API", "CleanArchitecture.API\CleanArchitecture.API.csproj", "{0F6C9DFB-0CCD-439E-A71C-91279AF113DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitecture.DataTransfer", "CleanArchitecture.DataTranfer\CleanArchitecture.DataTransfer.csproj", "{186C3CBD-8A2F-4DDE-8A5C-3E29065B177C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean Architecture.DataTransfer", "Clean Architecture.DataTransfer\Clean Architecture.DataTransfer.csproj", "{F41285B1-8A55-46F7-8209-2E384A8B9EBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{0F6C9DFB-0CCD-439E-A71C-91279AF113DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F6C9DFB-0CCD-439E-A71C-91279AF113DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F6C9DFB-0CCD-439E-A71C-91279AF113DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{186C3CBD-8A2F-4DDE-8A5C-3E29065B177C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{186C3CBD-8A2F-4DDE-8A5C-3E29065B177C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{186C3CBD-8A2F-4DDE-8A5C-3E29065B177C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{186C3CBD-8A2F-4DDE-8A5C-3E29065B177C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F41285B1-8A55-46F7-8209-2E384A8B9EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F41285B1-8A55-46F7-8209-2E384A8B9EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F41285B1-8A55-46F7-8209-2E384A8B9EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F41285B1-8A55-46F7-8209-2E384A8B9EBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

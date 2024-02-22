@@ -1,3 +1,6 @@
+using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Compact;
 using CleanArchitecture.Application;
 using CleanArchitecture.Infrustructure;
 
@@ -5,6 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+Log.Logger = new LoggerConfiguration()
+               .MinimumLevel.Debug()
+               .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+               .ReadFrom.Configuration(builder.Configuration)
+               .WriteTo.Console(new CompactJsonFormatter())
+               .CreateLogger();
+
+Log.Logger.Information("Logger is open successfully");
+
+builder.Host.UseSerilog();
 builder.Services.AddApplicationDependency();
 builder.Services.AddInfrustructureDependency(builder.Configuration);
 builder.Services.AddControllers();
@@ -19,6 +32,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseExceptionHandler("/Error/Error");
+    app.UseStatusCodePagesWithReExecute("/Error/PageNotFound/{0}");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();

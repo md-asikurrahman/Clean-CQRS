@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Clean Architecture.DataTransfer\Clean Architecture.DataTransfer.csproj" />
+    <ProjectReference Include="..\Clean Architecture.DataTransfer\CleanArchitecture.DataTransfer.csproj" />
     <ProjectReference Include="..\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
   </ItemGroup>
 

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.Infrustru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.API", "CleanArchitecture.API\CleanArchitecture.API.csproj", "{0F6C9DFB-0CCD-439E-A71C-91279AF113DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clean Architecture.DataTransfer", "Clean Architecture.DataTransfer\Clean Architecture.DataTransfer.csproj", "{F41285B1-8A55-46F7-8209-2E384A8B9EBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchitecture.DataTransfer", "Clean Architecture.DataTransfer\CleanArchitecture.DataTransfer.csproj", "{F41285B1-8A55-46F7-8209-2E384A8B9EBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

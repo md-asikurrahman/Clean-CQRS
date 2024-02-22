@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Expressions;
 
 namespace CleanArchitecture.DataTransfer.Repository
 {
@@ -22,16 +24,6 @@ namespace CleanArchitecture.DataTransfer.Repository
             return DbSet.AddRangeAsync(entities , cancellationToken);
         }
 
-        public Task DeleteAsync(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Dispose()
         {
             throw new NotImplementedException();
@@ -41,13 +33,27 @@ namespace CleanArchitecture.DataTransfer.Repository
         {
             throw new NotImplementedException();
         }
-
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public Task UpdateAsync(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetByIdAsync(int id)
+        public Task UpdateAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<TEntity>> GetAllAsync(Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? includes = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<TEntity?> GetByIdAsync(Expression<Func<TEntity, bool>> predicate, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? includes = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
         {
             throw new NotImplementedException();
         }
@@ -57,12 +63,7 @@ namespace CleanArchitecture.DataTransfer.Repository
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
+        public Task DeleteAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

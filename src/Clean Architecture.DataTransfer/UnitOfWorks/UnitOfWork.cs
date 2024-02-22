@@ -11,23 +11,55 @@ namespace Clean_Architecture.DataTransfer.UnitOfWorks
         private readonly Dictionary<Type, object> _repositories = new();
         private IDbContextTransaction _transaction = null!;
 
-        public Task BeginTransactionAsync(CancellationToken cancellationToken = default)
+        public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            _transaction = await DbContext!.Database.BeginTransactionAsync(cancellationToken);
         }
 
-        public Task CommitAsync(CancellationToken cancellationToken = default)
+        public async Task CommitAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _transaction.CommitAsync(cancellationToken);
+            }
+            catch (Exception)
+            {
+
+                await _transaction.RollbackAsync(cancellationToken); ;
+            }
+            finally
+            {
+                await _transaction.DisposeAsync();
+                _transaction = null!;
+            }
         }
 
-        public ValueTask DisposeAsync()
+        public async ValueTask DisposeAsync()
         {
-            throw new NotImplementedException();
+            Dispose(disposing: false);
+            await DisposeAsyncCore().ConfigureAwait(false);
+            GC.SuppressFinalize(this);
+        }
+        private async ValueTask DisposeAsyncCore()
+        {
+            if (DbContext is not null)
+            {
+                await DbContext.DisposeAsync().ConfigureAwait(false);
+            }
+
+            DbContext = null;
         }
 
-        public IGenericRepository<TEntity> GenericRepository<TEntity>() where TEntity : class
+        public IGenericRepository<TEntity> GetGenericRepository<TEntity>() where TEntity : class
         {
+            var type = typeof(TEntity);
+            if (_repositories.ContainsKey(type))
+            {
+                return (_repositories[type] as IGenericRepository<TEntity>)!;
+            }
+
+            var repository = new GenericRepository<TEntity>(DbContext!);
+            _repositories.Add(type, repository);
             throw new NotImplementedException();
         }
 
@@ -36,14 +68,14 @@ namespace Clean_Architecture.DataTransfer.UnitOfWorks
             throw new NotImplementedException();
         }
 
-        public Task<int> SaveChangeAsync(CancellationToken cancellationToken = default)
+        public async Task<int> SaveChangeAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return await DbContext!.SaveChangesAsync(cancellationToken);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            DbContext!.SaveChanges();
         }
 
         protected virtual void Dispose(bool disposing)
@@ -52,25 +84,17 @@ namespace Clean_Architecture.DataTransfer.UnitOfWorks
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects)
+                    DbContext!.Dispose();
+                    DbContext = null;
                 }
 
-                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
-                // TODO: set large fields to null
                 disposedValue = true;
             }
         }
 
-        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
-        // ~UnitOfWork()
-        // {
-        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
-        //     Dispose(disposing: false);
-        // }
 
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }

@@ -9,7 +9,7 @@ namespace Clean_Architecture.DataTransfer.UnitOfWorks
         Task BeginTransactionAsync(CancellationToken cancellationToken = default);
         Task CommitAsync(CancellationToken cancellationToken = default);
         Task RollbackAsync(CancellationToken cancellationToken = default);
-        IGenericRepository<TEntity> GenericRepository<TEntity>() where TEntity : class;
+        IGenericRepository<TEntity> GetGenericRepository<TEntity>() where TEntity : class;
 
     }
 }

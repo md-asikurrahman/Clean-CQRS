@@ -1,18 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-using System.Linq.Expressions;
 
 namespace CleanArchitecture.DataTransfer.Repository
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         private DbContext? DbContext;
+        public DbSet<TEntity> DbSet;
         public GenericRepository(DbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<TEntity>();
         }
-        public DbSet<TEntity> DbSet;
+        
         public  Task AddAsync(TEntity entity, CancellationToken cancellationToken)
         {
              DbSet.AddAsync(entity, cancellationToken);

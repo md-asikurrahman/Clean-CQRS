@@ -1,6 +1,7 @@
 ﻿using CleanArchitecture.API.Models.AccountModels;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
+using CleanArchitecture.Application.DTOs;
 
 
 
@@ -17,7 +18,7 @@ namespace CleanArchitecture.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> UserRegistration([FromBody]UserRegistrationModel request)
+        public async Task<ActionResult<UserRegistrationDto>> UserRegistration([FromBody]UserRegistrationModel request)
         {
             try
             {

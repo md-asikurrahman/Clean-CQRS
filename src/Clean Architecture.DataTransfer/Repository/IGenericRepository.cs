@@ -1,15 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace CleanArchitecture.DataTransfer.Repository
 {
     public interface IGenericRepository<TEntity> : IDisposable, IAsyncDisposable where TEntity : class
     {
+        DbSet<TEntity> DbSet { get; }
         Task<IEnumerable<TEntity>> GetAllAsync(Func<IQueryable<TEntity>,IIncludableQueryable<TEntity,object>>? includes = null);
         Task<TEntity?> GetByIdAsync(Expression<Func<TEntity,bool>> predicate,Func<IQueryable<TEntity>,IIncludableQueryable<TEntity,object>>? includes = null);
         Task<TEntity> GetByNameAsync(string name);

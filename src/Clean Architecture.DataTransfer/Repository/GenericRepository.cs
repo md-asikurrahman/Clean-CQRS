@@ -7,13 +7,12 @@ namespace CleanArchitecture.DataTransfer.Repository
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         private DbContext? DbContext;
-        public DbSet<TEntity> DbSet;
         public GenericRepository(DbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<TEntity>();
         }
-        
+        public DbSet<TEntity> DbSet { get; }
         public  Task AddAsync(TEntity entity, CancellationToken cancellationToken)
         {
              DbSet.AddAsync(entity, cancellationToken);

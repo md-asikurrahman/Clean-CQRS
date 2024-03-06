@@ -11,6 +11,10 @@ namespace CleanArchitecture.DataTransfer.UnitOfWorks
         private readonly Dictionary<Type, object> _repositories = new();
         private IDbContextTransaction _transaction = null!;
 
+        public UnitOfWork(TContext context)
+        {
+           DbContext = context;
+        }
         public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
         {
             _transaction = await DbContext!.Database.BeginTransactionAsync(cancellationToken);
@@ -60,8 +64,18 @@ namespace CleanArchitecture.DataTransfer.UnitOfWorks
 
             var repository = new GenericRepository<TEntity>(DbContext!);
             _repositories.Add(type, repository);
-            throw new NotImplementedException();
         }
+        //public IGenericRepository<TEntity> GetGenericRepository<TEntity>() where TEntity : class
+        //{
+        //    var type = typeof(TEntity);
+        //    if (_repositories.ContainsKey(type))
+        //    {
+        //        return (_repositories[type] as IGenericRepository<TEntity>)!;
+        //    }
+
+        //    //var repository = new GenericRepository<TEntity>(DbContext!);
+        //    //_repositories.Add(type, repository);
+        //}
 
         public Task RollbackAsync(CancellationToken cancellationToken = default)
         {
@@ -98,5 +112,7 @@ namespace CleanArchitecture.DataTransfer.UnitOfWorks
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+
+       
     }
 }

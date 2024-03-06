@@ -4,7 +4,8 @@ using Serilog.Formatting.Compact;
 using CleanArchitecture.Application;
 using CleanArchitecture.Infrustructure;
 using CleanArchitecture.DataTransfer.UnitOfWorks;
-using Microsoft.EntityFrameworkCore;
+using CleanArchitecture.Infrustructure.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +22,7 @@ Log.Logger.Information("Logger is open successfully");
 
 builder.Host.UseSerilog();
 builder.Services.AddApplicationDependency();
-builder.Services.AddScoped<IUnitOfWork,UnitOfWork<DbContext>>();
+builder.Services.AddScoped<IUnitOfWork,UnitOfWork<ApplicationDbContext>>();
 builder.Services.AddInfrustructureDependency(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
